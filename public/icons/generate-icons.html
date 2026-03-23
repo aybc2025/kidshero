@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html><head><meta charset="UTF-8"><title>Generate PWA Icons</title></head>
+<body style="background:#222;color:#fff;font-family:sans-serif;padding:40px;text-align:center">
+<h1>🐀 PWA Icon Generator</h1>
+<p>Right-click each image → "Save image as..." → save to <code>public/icons/</code></p>
+<div id="out" style="display:flex;gap:40px;justify-content:center;margin-top:30px;flex-wrap:wrap"></div>
+<script>
+[192, 512].forEach(size => {
+  const c = document.createElement('canvas');
+  c.width = c.height = size;
+  const ctx = c.getContext('2d');
+  // Background
+  const g = ctx.createRadialGradient(size/2, size*0.4, 0, size/2, size/2, size*0.6);
+  g.addColorStop(0, '#3d2b1f'); g.addColorStop(1, '#1a0a00');
+  ctx.fillStyle = g;
+  ctx.beginPath(); ctx.roundRect(0, 0, size, size, size*0.16); ctx.fill();
+  // Border
+  ctx.strokeStyle = '#ffd70066'; ctx.lineWidth = size*0.02;
+  ctx.beginPath(); ctx.roundRect(size*0.03, size*0.03, size*0.94, size*0.94, size*0.14); ctx.stroke();
+  // Rat emoji
+  ctx.font = `${size*0.48}px serif`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillStyle = '#fff';
+  ctx.fillText('🐀', size/2, size*0.42);
+  // Text
+  ctx.font = `900 ${size*0.1}px sans-serif`; ctx.fillStyle = '#ffd700';
+  ctx.fillText('גיבורים', size/2, size*0.78);
+  // Subtitle
+  ctx.font = `${size*0.055}px sans-serif`; ctx.fillStyle = '#a89060';
+  ctx.fillText('מרתף החולדות', size/2, size*0.88);
+
+  const div = document.createElement('div');
+  div.innerHTML = `<div style="margin-bottom:8px;font-size:14px">icon-${size}.png</div>`;
+  const img = new Image(); img.src = c.toDataURL('image/png');
+  img.style.cssText = `width:${Math.min(size,256)}px;height:${Math.min(size,256)}px;border:2px solid #ffd700;border-radius:16px`;
+  div.appendChild(img);
+  // Download link
+  const a = document.createElement('a');
+  a.href = c.toDataURL('image/png');
+  a.download = `icon-${size}.png`;
+  a.textContent = `⬇️ Download icon-${size}.png`;
+  a.style.cssText = 'display:block;margin-top:8px;color:#ffd700;font-size:14px';
+  div.appendChild(a);
+  document.getElementById('out').appendChild(div);
+});
+</script>
+</body></html>

@@ -1,0 +1,20 @@
+{
+  "name": "ילדים גיבורים — מרתף החולדות",
+  "short_name": "מרתף החולדות",
+  "description": "משחק RPG אינטראקטיבי בעברית — הצילו את רוג׳ר ממלך החולדות!",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#1a0a00",
+  "theme_color": "#2c1810",
+  "dir": "rtl",
+  "lang": "he",
+  "categories": ["games", "entertainment", "education"],
+  "icons": [
+    { "src": "icons/icon-192.svg", "sizes": "192x192", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-512.svg", "sizes": "512x512", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+  ]
+}
